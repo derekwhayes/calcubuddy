@@ -11,6 +11,7 @@
 
 * {
     border: 1px solid red;
+    box-sizing: border-box;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
 }
 
 #calcy {
+    position: relative;
     background-color: var(--case);
     height: 98%;
     border-radius: 3%;
@@ -54,7 +56,52 @@ body {
 
 #work-area {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5%;
+    margin: 10% 6%;
 }
 
-#work-area
+#ce,
+#divide,
+#mult,
+#c,
+#minus,
+#plus {
+    background-color: var(--case);
+    font-size: 1.8rem;
+    grid-column: span 2;
+    aspect-ratio: 1 / 1;
+}
+
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#zero,
+#dot {
+    background-color: var(--btns);
+    font-size: 2.2rem;
+    grid-column: span 2;
+    aspect-ratio: 1 / 1;
+}
+
+#equal {
+    background-color: var(--btn-equal);
+    font-size: 1.8rem;
+    grid-column: span 3;
+    aspect-ratio: auto;
+}
+
+#zero {
+    grid-column: span 3;
+    aspect-ratio: auto;
+}
+
+#power-switch {
+    grid-column: span 2;
+}
