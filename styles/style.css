@@ -1,0 +1,10 @@
+:root {
+    /* colors */
+    --case: #c5b08a;
+    --face: linear-gradient(to bottom, #7d7b7b 0%,#23211f 37%);
+    --btns: #E0D6C3;
+    --btn-equal: #E47800;
+    --logo: #F0EAC0;
+    --font: #413330;
+    --led: #E92D98;
+}
