@@ -8,3 +8,53 @@
     --font: #413330;
     --led: #E92D98;
 }
+
+* {
+    border: 1px solid red;
+}
+
+body {
+    height: 100vh;
+    margin: 2%;
+}
+
+#calcy {
+    background-color: var(--case);
+    height: 98%;
+    border-radius: 3%;
+    border: 2px solid black;
+    
+}
+
+#face {
+    background: var(--face);
+    height: 89%;
+    margin: 20% 3%;
+    border-radius: 5% 5% 0 0; 
+}
+
+#display {
+    background-color: black;
+    color: var(--led);
+    font-size: 1.5rem;
+    text-align: right;
+    padding: 1.8rem;
+    border-radius: 10% 10% 0 0;
+}
+
+#name-plate {
+    border-bottom: 3px solid black;
+}
+
+#name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: .3rem 1rem;
+}
+
+#work-area {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+#work-area
