@@ -26,12 +26,12 @@ body {
     place-items: center;
     height: 100vh;
     margin: 0;
-    background:repeating-linear-gradient(#00f, #00f 12.5px, #70a 12.5px, #70a 25px, #f00 25px, #f00 37.5px, #f70 37px, #f70 50px, #ff0 50px, #ff0 62.5px, #0f0 62.5px, #0f0 75px);}
+    background:linear-gradient(#00f, #00f, #70a, #70a, #f00, #f00, #f70, #f70, #ff0, #ff0, #0f0, #0f0);}
 
 #calcy {
     position: relative;
     background-color: var(--case);
-    width: clamp(300px, 100%, 480px);
+    width: clamp(300px, 100%, 475px);
     aspect-ratio: 1 / 1.9;
     border-radius: 3%;
     border: 2px solid black;
