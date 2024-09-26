@@ -142,3 +142,24 @@ body {
 #power-switch {
     grid-column: span 2;
 }
+
+#ce:active,
+#divide:active,
+#mult:active,
+#c:active,
+#minus:active,
+#plus:active,
+#one:active,
+#two:active,
+#three:active,
+#four:active,
+#five:active,
+#six:active,
+#seven:active,
+#eight:active,
+#nine:active,
+#zero:active,
+#dot:active,
+#equal:active {
+    box-shadow: none;
+}
