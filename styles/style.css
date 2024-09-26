@@ -7,9 +7,12 @@
 :root {
     /* colors */
     --case: #c5b08a;
+    --case-shadow: #c5b08a67;
     --face: linear-gradient(to bottom, #7d7b7b 0%,#23211f 37%);
     --btns: #E0D6C3;
+    --btns-shadow: #e0d6c367;
     --btn-equal: #E47800;
+    --btn-equal-shadow: #E4780067;
     --logo: #f0eac0;
     --font: #413330;
     --led: #d02987c4;
@@ -99,6 +102,8 @@ body {
     font-size: 1.8rem;
     grid-column: span 2;
     aspect-ratio: 1 / 1;
+    border-radius: 10%;
+    box-shadow: 0 3px var(--case-shadow);
 }
 
 #one,
@@ -116,6 +121,8 @@ body {
     font-size: 2.2rem;
     grid-column: span 2;
     aspect-ratio: 1 / 1;
+    border-radius: 10%;
+    box-shadow: 0 3px var(--btns-shadow);
 }
 
 #equal {
@@ -123,6 +130,8 @@ body {
     font-size: 1.8rem;
     grid-column: span 3;
     aspect-ratio: auto;
+    border-radius: 10%;
+    box-shadow: 0 3px var(--btn-equal-shadow);
 }
 
 #zero {
