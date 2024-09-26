@@ -1,3 +1,9 @@
+@font-face {
+    font-family: led;
+    src: local(SFDigitalReadout-Heavy);
+    src: url(../fonts/SFDigitalReadout-Heavy.ttf);
+}
+
 :root {
     /* colors */
     --case: #c5b08a;
@@ -6,7 +12,8 @@
     --btn-equal: #E47800;
     --logo: #F0EAC0;
     --font: #413330;
-    --led: #E92D98;
+    --led: #d02987c4;
+    --led-blur: #d780a0;
 }
 
 * {
@@ -16,32 +23,40 @@
 
 body {
     height: 100vh;
-    margin: 2%;
+    margin: 0;
 }
 
 #calcy {
     position: relative;
     background-color: var(--case);
-    height: 98%;
+    height: 100%;
     border-radius: 3%;
     border: 2px solid black;
-    
 }
 
 #face {
+    position: absolute;
     background: var(--face);
+    top: 4rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 97%;
     height: 89%;
-    margin: 20% 3%;
-    border-radius: 5% 5% 0 0; 
+    border-radius: 5% 5% 0 0;
+    overflow: hidden; 
 }
 
 #display {
     background-color: black;
     color: var(--led);
-    font-size: 1.5rem;
+    text-shadow: 0 0 5px var(--led-blur);
+    font-size: 1.9rem;
+    letter-spacing: .8rem;
     text-align: right;
     padding: 1.8rem;
     border-radius: 10% 10% 0 0;
+    font-family: led;
 }
 
 #name-plate {
