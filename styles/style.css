@@ -10,7 +10,7 @@
     --face: linear-gradient(to bottom, #7d7b7b 0%,#23211f 37%);
     --btns: #E0D6C3;
     --btn-equal: #E47800;
-    --logo: #F0EAC0;
+    --logo: #f0eac0;
     --font: #413330;
     --led: #d02987c4;
     --led-blur: #d780a0;
@@ -37,7 +37,7 @@ body {
 #face {
     position: absolute;
     background: var(--face);
-    top: 4rem;
+    top: 4.5rem;
     left: 0;
     right: 0;
     margin-inline: auto;
@@ -61,12 +61,21 @@ body {
 
 #name-plate {
     border-bottom: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .2rem .5rem .2rem 4rem; 
+}
+
+#logo {
+    width: 2.3rem;
 }
 
 #name {
     font-size: 1.5rem;
     font-weight: bold;
-    padding: .3rem 1rem;
+    padding: .3rem 1rem 0 1rem;
+    color: var(--logo)
 }
 
 #work-area {
