@@ -3,6 +3,9 @@ let num2 = undefined;
 let operator;
 let displayVal = '';
 let isSolved = false;
+let isEqualed = false;
+let currNum;
+let equation;
 
 const display = document.querySelector('#display');
 const plus = document.querySelector('#plus');
@@ -23,6 +26,7 @@ const equal = document.querySelector('#equal');
 const clear = document.querySelector('#c');
 const clearEntry = document.querySelector('#ce');
 const dot = document.querySelector('#dot');
+const allBtns = document.querySelectorAll('button');
 
 function add(num1, num2) {
     return num1 + num2;
@@ -54,7 +58,7 @@ function operate(num1, num2, operator) {
         case div:
             return divide(num1, num2);
         default:
-            return '';
+            return 0; // if trying to equal with no operator
     }
 }
 
@@ -91,7 +95,8 @@ function checkForOverflow() {
 function getResult() {
     if (checkForOverflow()) {
         if (num2 === undefined) {
-            num2 = num1;
+            currNum = displayVal;
+            num2 = currNum;
         }
         displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
         updateDisplay();
@@ -216,18 +221,28 @@ dot.addEventListener('click', () => {
 
 
 plus.addEventListener('click', () => {
-    
-    // if num1 is undefined it means we want to start another operation
-    if (checkForOverflow() && num1 === undefined) {
-        num1 = displayVal;
-        displayVal = ''; // necessary so next number doesn't concat
-        operator = plus;
-    }
-    else {
-        displayVal = '';
-        getResult();
-    }
 
+    // if num1 is undefined it means we want to start another operation
+    if (checkForOverflow()) {
+        operator = plus;
+        if (num1 === undefined) {
+            num1 = displayVal;
+            displayVal = ''; // necessary so next number doesn't concat
+            
+        }
+        else if (num1 === '') {
+            num1 = undefined;
+        }
+        else if (num2 === undefined && !isEqualed) { // in case using plus as equals
+            
+            getResult();
+        }
+        else if (!isEqualed){
+            num2 = currNum; // for additional plus clicks
+            getResult();
+        }
+
+    }
 });
 minus.addEventListener('click', () => {
     if (checkForOverflow() && operator === undefined) {
@@ -258,26 +273,31 @@ div.addEventListener('click', () => {
 equal.addEventListener('click', () => {
     if (!isSolved) {
         num2 = displayVal;
+        if (num1 === '') {
+            return;
+        }
         equation = operate(parseFloat(num1), parseFloat(num2), operator);
         // in case result exceeds the 10digit limit
         if (equation === 'N0N0N0N0') {
             displayVal = equation;
         }
         else if (equation > 9999999999) {
-            displayVal = 'ERR';          
+            displayVal = 'ERR';
         }
         else if (!Number.isSafeInteger(equation)) {
             equation = equation.toFixed(2);
-            displayVal = equation.toString();            
+            displayVal = equation.toString();
         }
         else {
             displayVal = equation.toString();
         }
-        updateDisplay();   
-        num1 = undefined;
+        updateDisplay();
+        num1 = displayVal;
         num2 = undefined;
         isSolved = true;
+        isEqualed = true;
         operator = undefined;
+
     }
 });
 
@@ -287,6 +307,7 @@ clear.addEventListener('click', () => {
     displayVal = '';
     operator = undefined;
     isSolved = false;
+    isEqualed = false;
     updateDisplay('0');
 });
 
