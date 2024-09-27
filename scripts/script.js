@@ -66,74 +66,120 @@ function clearDisplay() {
     display.textContent = '0.';
 }
 
-// assign number to displayVal...there's gotta be a better way
+function checkForOverflow() {
+    if (displayVal.includes('E')) {
+        return false;
+    }
+    else {
+        if (displayVal.length < 8) {
+            return true;
+        }
+        else {
+            displayVal = 'E' + displayVal;
+            updateDisplay();
+            return false;
+        }
+    }
+}
 
+// assign number to displayVal...there's gotta be a better way
 one.addEventListener('click', () => {
-    displayVal += '1';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '1';
+        updateDisplay();
+    }
 });
 two.addEventListener('click', () => {
-    displayVal += '2';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '2';
+        updateDisplay();
+    }
 });
 three.addEventListener('click', () => {
-    displayVal += '3';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '3';
+        updateDisplay();
+    }
 });
 four.addEventListener('click', () => {
-    displayVal += '4';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '4';
+        updateDisplay();
+    }
 });
 five.addEventListener('click', () => {
-    displayVal += '5';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '5';
+        updateDisplay();
+    }
 });
 six.addEventListener('click', () => {
-    displayVal += '6';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '6';
+        updateDisplay();
+    }
 });
 seven.addEventListener('click', () => {
-    displayVal += '7';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '7';
+        updateDisplay();
+    }
 });
 eight.addEventListener('click', () => {
-    displayVal += '8';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '8';
+        updateDisplay();
+    }
 });
 nine.addEventListener('click', () => {
-    displayVal += '9';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '9';
+        updateDisplay();
+    }
 });
 zero.addEventListener('click', () => {
-    displayVal += '0';
-    updateDisplay();
+    if (checkForOverflow()) {
+        displayVal += '0';
+        updateDisplay();
+    }
 });
 
+
 plus.addEventListener('click', () => {
-    num1 = displayVal;
-    displayVal = '';
-    operator = plus;
+    if (checkForOverflow()) {
+        num1 = displayVal;
+        displayVal = '';
+        operator = plus;
+    }
 });
 minus.addEventListener('click', () => {
-    num1 = displayVal;
-    displayVal = '';
-    operator = minus;
+    if (checkForOverflow()) {
+        num1 = displayVal;
+        displayVal = '';
+        operator = minus;
+    }
 });
 mult.addEventListener('click', () => {
-    num1 = displayVal;
-    displayVal = '';
-    operator = mult;
+    if (checkForOverflow()) {
+        num1 = displayVal;
+        displayVal = '';
+        operator = mult;
+    }
 });
 div.addEventListener('click', () => {
-    num1 = displayVal;
-    displayVal = '';
-    operator = div;
+    if (checkForOverflow()) {
+        num1 = displayVal;
+        displayVal = '';
+        operator = div;
+    }
 });
 
 equal.addEventListener('click', () => {
-    num2 = displayVal;
-    displayVal = operate(parseInt(num1), parseInt(num2), operator);
-    updateDisplay();
+    if (checkForOverflow()) {
+        num2 = displayVal;
+        displayVal = operate(parseInt(num1), parseInt(num2), operator);
+        updateDisplay();
+    }
 });
 
 clear.addEventListener('click', () => {
