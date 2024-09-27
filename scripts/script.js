@@ -1,7 +1,8 @@
-let input1;
-let input2;
+let num1;
+let num2;
 let operator;
 let displayVal = '';
+let isSolved = false;
 
 const display = document.querySelector('#display');
 const plus = document.querySelector('#plus');
@@ -63,6 +64,7 @@ function updateDisplay() {
     }
 }
 
+// display can only show 10 digits including dots and negative sign
 function clearDisplay() {
     display.textContent = '0';
 }
@@ -80,6 +82,18 @@ function checkForOverflow() {
             updateDisplay();
             return false;
         }
+    }
+}
+
+function getResult() {
+    if (checkForOverflow()) {
+        console.log(num1);
+        displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
+        updateDisplay();
+        num2 = undefined;
+        // set result to num1 so user can do another operation off of it
+        num1 = displayVal;
+        isSolved = true;
     }
 }
 
@@ -109,6 +123,9 @@ four.addEventListener('click', () => {
     }
 });
 five.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+    }
     if (checkForOverflow()) {
         displayVal += '5';
         updateDisplay();
@@ -155,11 +172,18 @@ dot.addEventListener('click', () => {
 
 
 plus.addEventListener('click', () => {
-    if (checkForOverflow() && operator === undefined) {
+    // if num1 is undefined it means we want to start another operation
+    if (checkForOverflow() && num1 === undefined) {
         num1 = displayVal;
         displayVal = '';
         operator = plus;
     }
+    else {
+        num2 = displayVal;
+        displayVal = '';
+        getResult();
+    }
+
 });
 minus.addEventListener('click', () => {
     if (checkForOverflow() && operator === undefined) {
@@ -184,13 +208,8 @@ div.addEventListener('click', () => {
 });
 
 equal.addEventListener('click', () => {
-    if (checkForOverflow()) {
-        num2 = displayVal;
-        displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
-        updateDisplay();
-        num2 = undefined;
-        num1 = displayVal;
-    }
+    num2 = displayVal;
+    getResult();
 });
 
 clear.addEventListener('click', () => {
