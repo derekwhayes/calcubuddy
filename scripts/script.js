@@ -72,7 +72,7 @@ function checkForOverflow() {
         return false;
     }
     else {
-        if (displayVal.length < 8) {
+        if (displayVal.length < 10) {
             return true;
         }
         else {
@@ -155,28 +155,28 @@ dot.addEventListener('click', () => {
 
 
 plus.addEventListener('click', () => {
-    if (checkForOverflow()) {
+    if (checkForOverflow() && operator === undefined) {
         num1 = displayVal;
         displayVal = '';
         operator = plus;
     }
 });
 minus.addEventListener('click', () => {
-    if (checkForOverflow()) {
+    if (checkForOverflow() && operator === undefined) {
         num1 = displayVal;
         displayVal = '';
         operator = minus;
     }
 });
 mult.addEventListener('click', () => {
-    if (checkForOverflow()) {
+    if (checkForOverflow() && operator === undefined) {
         num1 = displayVal;
         displayVal = '';
         operator = mult;
     }
 });
 div.addEventListener('click', () => {
-    if (checkForOverflow()) {
+    if (checkForOverflow() && operator === undefined) {
         num1 = displayVal;
         displayVal = '';
         operator = div;
