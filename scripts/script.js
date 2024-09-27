@@ -37,6 +37,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return 'N0N0N0N0'
+    }
     return num1 / num2;
 }
 
@@ -257,7 +260,10 @@ equal.addEventListener('click', () => {
         num2 = displayVal;
         equation = operate(parseFloat(num1), parseFloat(num2), operator);
         // in case result exceeds the 10digit limit
-        if (equation > 9999999999) {
+        if (equation === 'N0N0N0N0') {
+            displayVal = equation;
+        }
+        else if (equation > 9999999999) {
             displayVal = 'ERR';          
         }
         else if (!Number.isSafeInteger(equation)) {
