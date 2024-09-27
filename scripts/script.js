@@ -232,9 +232,21 @@ equal.addEventListener('click', () => {
     if (!isSolved) {
         num2 = displayVal;
         console.log("equalClick.begin ::: num1:", num1, "num2:", num2, "isSolved:", isSolved, "operator:", operator);
-
-        displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
-        updateDisplay();
+        equation = operate(parseFloat(num1), parseFloat(num2), operator);
+        console.log("int?:", Number.isSafeInteger(equation));
+        // in case result exceeds the 10digit limit
+        if (equation > 9999999999) {
+            displayVal = 'ERR';          
+        }
+        else if (!Number.isSafeInteger(equation)) {
+            console.log("nonint TRIGGER");
+            equation = equation.toFixed(2);
+            displayVal = equation.toString();            
+        }
+        else {
+            displayVal = equation.toString();
+        }
+        updateDisplay();   
         num1 = undefined;
         num2 = undefined;
         isSolved = true;
