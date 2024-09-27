@@ -186,7 +186,7 @@ div.addEventListener('click', () => {
 equal.addEventListener('click', () => {
     if (checkForOverflow()) {
         num2 = displayVal;
-        displayVal = (operate(parseInt(num1), parseInt(num2), operator)).toString();
+        displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
         updateDisplay();
         num2 = undefined;
         num1 = displayVal;
