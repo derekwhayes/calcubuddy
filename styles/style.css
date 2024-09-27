@@ -4,6 +4,12 @@
     src: url(../fonts/SFDigitalReadout-Heavy.ttf);
 }
 
+@font-face {
+    font-family: oswald;
+    src: local(Oswald-Bold);
+    src: url(../fonts/Oswald-Bold.ttf);
+}
+
 :root {
     /* colors */
     --case: #c5b08a;
@@ -82,7 +88,8 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     padding: .3rem 1rem 0 1rem;
-    color: var(--logo)
+    color: var(--logo);
+    font-family: oswald;
 }
 
 #work-area {
