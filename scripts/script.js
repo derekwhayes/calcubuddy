@@ -1,5 +1,8 @@
 let input1;
 let input2;
+let displayVal = '';
+
+const display = document.querySelector('#display');
 const plus = document.querySelector('#plus');
 const minus = document.querySelector('#minus');
 const mult = document.querySelector('#mult');
@@ -14,8 +17,6 @@ const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
-
-let displayVal;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -49,7 +50,48 @@ function operate(num1, num2, operator) {
 }
 
 function updateDisplay(num) {
-    const display = document.querySelector('#display');
-    display.textContent = num;
+    display.textContent = displayVal;
 }
 
+// assign number to displayVal...there's gotta be a better way
+
+one.addEventListener('click', () => {
+    displayVal += '1';
+    updateDisplay(displayVal);
+});
+two.addEventListener('click', () => {
+    displayVal += '2';
+    updateDisplay(displayVal);
+});
+three.addEventListener('click', () => {
+    displayVal += '3';
+    updateDisplay(displayVal);
+});
+four.addEventListener('click', () => {
+    displayVal += '4';
+    updateDisplay(displayVal);
+});
+five.addEventListener('click', () => {
+    displayVal += '5';
+    updateDisplay(displayVal);
+});
+six.addEventListener('click', () => {
+    displayVal += '6';
+    updateDisplay(displayVal);
+});
+seven.addEventListener('click', () => {
+    displayVal += '7';
+    updateDisplay(displayVal);
+});
+eight.addEventListener('click', () => {
+    displayVal += '8';
+    updateDisplay(displayVal);
+});
+nine.addEventListener('click', () => {
+    displayVal += '9';
+    updateDisplay(displayVal);
+});
+zero.addEventListener('click', () => {
+    displayVal += '0';
+    updateDisplay(displayVal);
+});
