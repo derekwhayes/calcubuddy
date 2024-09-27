@@ -18,6 +18,7 @@ const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
+const equal = document.querySelector('#equal');
 
 function add(num1, num2) {
     return num1 + num2;
@@ -52,6 +53,10 @@ function operate(num1, num2, operator) {
 
 function updateDisplay(num) {
     display.textContent = displayVal;
+}
+
+function clearDisplay() {
+    display.textContent = '0.';
 }
 
 // assign number to displayVal...there's gotta be a better way
@@ -99,21 +104,31 @@ zero.addEventListener('click', () => {
 
 plus.addEventListener('click', () => {
     num1 = displayVal;
+    displayVal = '';
     operator = plus;
     clearDisplay();
 });
 minus.addEventListener('click', () => {
     num1 = displayVal;
+    displayVal = '';
     operator = minus;
     clearDisplay();
 });
 mult.addEventListener('click', () => {
     num1 = displayVal;
+    displayVal = '';
     operator = mult;
     clearDisplay();
 });
 div.addEventListener('click', () => {
     num1 = displayVal;
+    displayVal = '';
     operator = div;
     clearDisplay();
 });
+
+equal.addEventListener('click', () => {
+    num2 = displayVal;
+    displayVal = operate(parseInt(num1), parseInt(num2), operator);
+    updateDisplay(displayVal);
+})
