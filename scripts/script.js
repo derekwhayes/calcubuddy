@@ -21,6 +21,7 @@ const zero = document.querySelector('#zero');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#c');
 const clearEntry = document.querySelector('#ce');
+const dot = document.querySelector('#dot');
 
 function add(num1, num2) {
     return num1 + num2;
@@ -63,7 +64,7 @@ function updateDisplay() {
 }
 
 function clearDisplay() {
-    display.textContent = '0.';
+    display.textContent = '0';
 }
 
 function checkForOverflow() {
@@ -143,6 +144,14 @@ zero.addEventListener('click', () => {
         updateDisplay();
     }
 });
+dot.addEventListener('click', () => {
+    if (checkForOverflow()) {
+        if (!displayVal.includes('.')) {
+            displayVal += '.';
+            updateDisplay();
+        }
+    }
+})
 
 
 plus.addEventListener('click', () => {
@@ -177,8 +186,10 @@ div.addEventListener('click', () => {
 equal.addEventListener('click', () => {
     if (checkForOverflow()) {
         num2 = displayVal;
-        displayVal = operate(parseInt(num1), parseInt(num2), operator);
+        displayVal = (operate(parseInt(num1), parseInt(num2), operator)).toString();
         updateDisplay();
+        num2 = undefined;
+        num1 = displayVal;
     }
 });
 
