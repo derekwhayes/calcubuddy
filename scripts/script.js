@@ -86,14 +86,11 @@ function checkForOverflow() {
 }
 
 function getResult() {
-    console.log("getResult");
+    console.log("getResult().begin ::: num1:", num1, "num2:", num2, "operator:", operator);
     if (checkForOverflow()) {
-        console.log("checkForOverflow ok");
-        console.log("num2:", num2)
         if (num2 === undefined) {
             num2 = num1;
         }
-        console.log("num1:", num1, "num2:", num2, "operator:", operator);
         displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
         updateDisplay();
         num1 = displayVal;
@@ -101,6 +98,7 @@ function getResult() {
         // set result to num1 so user can do another operation off of it
         // num1 = displayVal;
         isSolved = true;
+        console.log("getResult().end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 }
 
@@ -130,14 +128,11 @@ four.addEventListener('click', () => {
     }
 });
 five.addEventListener('click', () => {
-    console.log("click5");
     if (isSolved) {
-        console.log("isSolved true");
         displayVal = '';
         isSolved = false;
     }
     if (checkForOverflow()) {
-        console.log("checkForOverflow ok");
         displayVal += '5';
         updateDisplay();
     }
@@ -183,28 +178,30 @@ dot.addEventListener('click', () => {
 
 
 plus.addEventListener('click', () => {
+    
     // if num1 is undefined it means we want to start another operation
-    console.log("plus click");
+    console.log("plusClick.start ::: num1:", num1, "num2:", num2, "operator:", operator);
     if (checkForOverflow() && num1 === undefined) {
-        console.log("checkForOverflow ok AND num1 = undefined");
-        // console.log("num1", num1)
+        
         num1 = displayVal;
         displayVal = ''; // necessary so next number doesn't concat
         operator = plus;
+        console.log("plusClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
+
     }
     else {
-        console.log("NOT checkForOverflow ok AND num1 = undefined");
+        // console.log("NOT checkForOverflow ok AND num1 = undefined");
         if (!isSolved) {
-            console.log("isSolved = false");
+            // console.log("isSolved = false");
             // num2 = displayVal;
         }
         else {
-            console.log("isSolved = true");
+            // console.log("isSolved = true");
             // num2 = num1;
         }
         displayVal = '';
         getResult();
-
+        console.log("plusClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 
 });
@@ -231,13 +228,18 @@ div.addEventListener('click', () => {
 });
 
 equal.addEventListener('click', () => {
+    console.log("equalClick.begin ::: num1:", num1, "num2:", num2, "isSolved:", isSolved, "operator:", operator);
     if (!isSolved) {
         num2 = displayVal;
+        console.log("equalClick.begin ::: num1:", num1, "num2:", num2, "isSolved:", isSolved, "operator:", operator);
+
         displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
         updateDisplay();
         num1 = undefined;
         num2 = undefined;
         isSolved = true;
+        operator = undefined;
+        console.log("equalClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 });
 
