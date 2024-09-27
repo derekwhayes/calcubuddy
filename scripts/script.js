@@ -1,5 +1,6 @@
 let input1;
 let input2;
+let operator;
 let displayVal = '';
 
 const display = document.querySelector('#display');
@@ -94,4 +95,25 @@ nine.addEventListener('click', () => {
 zero.addEventListener('click', () => {
     displayVal += '0';
     updateDisplay(displayVal);
+});
+
+plus.addEventListener('click', () => {
+    num1 = displayVal;
+    operator = plus;
+    clearDisplay();
+});
+minus.addEventListener('click', () => {
+    num1 = displayVal;
+    operator = minus;
+    clearDisplay();
+});
+mult.addEventListener('click', () => {
+    num1 = displayVal;
+    operator = mult;
+    clearDisplay();
+});
+div.addEventListener('click', () => {
+    num1 = displayVal;
+    operator = div;
+    clearDisplay();
 });
