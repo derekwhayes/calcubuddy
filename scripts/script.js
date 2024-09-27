@@ -86,7 +86,6 @@ function checkForOverflow() {
 }
 
 function getResult() {
-    console.log("getResult().begin ::: num1:", num1, "num2:", num2, "operator:", operator);
     if (checkForOverflow()) {
         if (num2 === undefined) {
             num2 = num1;
@@ -94,11 +93,7 @@ function getResult() {
         displayVal = (operate(parseFloat(num1), parseFloat(num2), operator)).toString();
         updateDisplay();
         num1 = displayVal;
-        // num2 = undefined;
-        // set result to num1 so user can do another operation off of it
-        // num1 = displayVal;
         isSolved = true;
-        console.log("getResult().end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 }
 
@@ -180,28 +175,14 @@ dot.addEventListener('click', () => {
 plus.addEventListener('click', () => {
     
     // if num1 is undefined it means we want to start another operation
-    console.log("plusClick.start ::: num1:", num1, "num2:", num2, "operator:", operator);
     if (checkForOverflow() && num1 === undefined) {
-        
         num1 = displayVal;
         displayVal = ''; // necessary so next number doesn't concat
         operator = plus;
-        console.log("plusClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
-
     }
     else {
-        // console.log("NOT checkForOverflow ok AND num1 = undefined");
-        if (!isSolved) {
-            // console.log("isSolved = false");
-            // num2 = displayVal;
-        }
-        else {
-            // console.log("isSolved = true");
-            // num2 = num1;
-        }
         displayVal = '';
         getResult();
-        console.log("plusClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 
 });
@@ -210,6 +191,10 @@ minus.addEventListener('click', () => {
         num1 = displayVal;
         displayVal = '';
         operator = minus;
+    }
+    else {
+        displayVal = '';
+        getResult();
     }
 });
 mult.addEventListener('click', () => {
@@ -228,10 +213,8 @@ div.addEventListener('click', () => {
 });
 
 equal.addEventListener('click', () => {
-    console.log("equalClick.begin ::: num1:", num1, "num2:", num2, "isSolved:", isSolved, "operator:", operator);
     if (!isSolved) {
         num2 = displayVal;
-        console.log("equalClick.begin ::: num1:", num1, "num2:", num2, "isSolved:", isSolved, "operator:", operator);
         equation = operate(parseFloat(num1), parseFloat(num2), operator);
         console.log("int?:", Number.isSafeInteger(equation));
         // in case result exceeds the 10digit limit
@@ -239,8 +222,7 @@ equal.addEventListener('click', () => {
             displayVal = 'ERR';          
         }
         else if (!Number.isSafeInteger(equation)) {
-            console.log("nonint TRIGGER");
-            equation = equation.toFixed(2);
+            equation = equation.toFixed(eqArr.length);
             displayVal = equation.toString();            
         }
         else {
@@ -251,7 +233,6 @@ equal.addEventListener('click', () => {
         num2 = undefined;
         isSolved = true;
         operator = undefined;
-        console.log("equalClick.end ::: num1:", num1, "num2:", num2, "operator:", operator);
     }
 });
 
