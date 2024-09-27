@@ -38,7 +38,7 @@ body {
     background:linear-gradient(#00f, #00f, #70a, #70a, #f00, #f00, #f70, #f70, #ff0, #ff0, #0f0, #0f0);}
 
 #calcy {
-    position: relative;
+    position: fixed;
     background-color: var(--case);
     width: clamp(300px, 100%, 475px);
     aspect-ratio: 1 / 1.9;
