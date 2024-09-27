@@ -224,7 +224,7 @@ plus.addEventListener('click', () => {
 
     // if num1 is undefined it means we want to start another operation
     if (checkForOverflow()) {
-        operator = plus;
+        operator = plus; // set operator at beginning eliminates issues after equaled is true
         if (num1 === undefined) {
             num1 = displayVal;
             displayVal = ''; // necessary so next number doesn't concat
@@ -245,14 +245,22 @@ plus.addEventListener('click', () => {
     }
 });
 minus.addEventListener('click', () => {
-    if (checkForOverflow() && operator === undefined) {
-        num1 = displayVal;
-        displayVal = '';
+    if (checkForOverflow()) {
         operator = minus;
-    }
-    else {
-        displayVal = '';
-        getResult();
+        if (num1 === undefined) {
+            num1 = displayVal;
+            displayVal = '';
+        }
+        else if (num1 === '') {
+            num1 = undefined;  // so hacky
+        }
+        else if (num2 === undefined && !isEqualed) {
+            getResult();
+        }
+        else if (!isEqualed) {
+            num2 = currNum;
+            getResult();
+        }
     }
 });
 mult.addEventListener('click', () => {
