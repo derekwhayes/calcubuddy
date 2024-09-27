@@ -99,24 +99,40 @@ function getResult() {
 
 // assign number to displayVal...there's gotta be a better way
 one.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '1';
         updateDisplay();
     }
 });
 two.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '2';
         updateDisplay();
     }
 });
 three.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '3';
         updateDisplay();
     }
 });
 four.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '4';
         updateDisplay();
@@ -133,36 +149,60 @@ five.addEventListener('click', () => {
     }
 });
 six.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '6';
         updateDisplay();
     }
 });
 seven.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '7';
         updateDisplay();
     }
 });
 eight.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '8';
         updateDisplay();
     }
 });
 nine.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '9';
         updateDisplay();
     }
 });
 zero.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         displayVal += '0';
         updateDisplay();
     }
 });
 dot.addEventListener('click', () => {
+    if (isSolved) {
+        displayVal = '';
+        isSolved = false;
+    }
     if (checkForOverflow()) {
         if (!displayVal.includes('.')) {
             displayVal += '.';
@@ -216,13 +256,12 @@ equal.addEventListener('click', () => {
     if (!isSolved) {
         num2 = displayVal;
         equation = operate(parseFloat(num1), parseFloat(num2), operator);
-        console.log("int?:", Number.isSafeInteger(equation));
         // in case result exceeds the 10digit limit
         if (equation > 9999999999) {
             displayVal = 'ERR';          
         }
         else if (!Number.isSafeInteger(equation)) {
-            equation = equation.toFixed(eqArr.length);
+            equation = equation.toFixed(2);
             displayVal = equation.toString();            
         }
         else {
