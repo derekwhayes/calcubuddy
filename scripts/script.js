@@ -67,7 +67,7 @@ function updateDisplay() {
     }
 }
 
-// display can only show 10 digits including dots and negative sign
+// display can only show 8 digits including dots and negative sign
 function clearDisplay() {
     display.textContent = '0';
 }
@@ -77,7 +77,7 @@ function checkForOverflow() {
         return false;
     }
     else {
-        if (displayVal.length < 10) {
+        if (displayVal.length < 8) {
             return true;
         }
         else {
