@@ -19,6 +19,8 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const zero = document.querySelector('#zero');
 const equal = document.querySelector('#equal');
+const clear = document.querySelector('#c');
+const clearEntry = document.querySelector('#ce');
 
 function add(num1, num2) {
     return num1 + num2;
@@ -51,8 +53,13 @@ function operate(num1, num2, operator) {
     }
 }
 
-function updateDisplay(num) {
-    display.textContent = displayVal;
+function updateDisplay() {
+    if (displayVal === '') {
+        display.textContent = '0';
+    }
+    else {
+        display.textContent = displayVal;
+    }
 }
 
 function clearDisplay() {
@@ -63,72 +70,82 @@ function clearDisplay() {
 
 one.addEventListener('click', () => {
     displayVal += '1';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 two.addEventListener('click', () => {
     displayVal += '2';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 three.addEventListener('click', () => {
     displayVal += '3';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 four.addEventListener('click', () => {
     displayVal += '4';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 five.addEventListener('click', () => {
     displayVal += '5';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 six.addEventListener('click', () => {
     displayVal += '6';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 seven.addEventListener('click', () => {
     displayVal += '7';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 eight.addEventListener('click', () => {
     displayVal += '8';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 nine.addEventListener('click', () => {
     displayVal += '9';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 zero.addEventListener('click', () => {
     displayVal += '0';
-    updateDisplay(displayVal);
+    updateDisplay();
 });
 
 plus.addEventListener('click', () => {
     num1 = displayVal;
     displayVal = '';
     operator = plus;
-    clearDisplay();
 });
 minus.addEventListener('click', () => {
     num1 = displayVal;
     displayVal = '';
     operator = minus;
-    clearDisplay();
 });
 mult.addEventListener('click', () => {
     num1 = displayVal;
     displayVal = '';
     operator = mult;
-    clearDisplay();
 });
 div.addEventListener('click', () => {
     num1 = displayVal;
     displayVal = '';
     operator = div;
-    clearDisplay();
 });
 
 equal.addEventListener('click', () => {
     num2 = displayVal;
     displayVal = operate(parseInt(num1), parseInt(num2), operator);
-    updateDisplay(displayVal);
+    updateDisplay();
+});
+
+clear.addEventListener('click', () => {
+    num1 = undefined;
+    num2 = undefined;
+    displayVal = '';
+    operator = undefined;
+    updateDisplay('0');
+});
+
+clearEntry.addEventListener('click', () => {
+    num2 = undefined;
+    displayVal = '';
+    updateDisplay();
 })
