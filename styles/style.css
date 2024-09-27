@@ -66,8 +66,8 @@ body {
     text-shadow: 0 0 5px var(--led-blur);
     font-size: 1.9rem;
     letter-spacing: .8rem;
-    text-align: center;
-    padding: 1.8rem;
+    text-align: right;
+    padding: 1.8rem 7%;
     border-radius: 10% 10% 0 0;
     font-family: led;
 }

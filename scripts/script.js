@@ -4,6 +4,7 @@ let plus;
 let minus;
 let mult;
 let div;
+let displayVal;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -36,3 +37,9 @@ function operate(num1, num2, operator) {
     }
 }
 
+function updateDisplay(num) {
+    const display = document.querySelector('#display');
+    display.textContent = num;
+}
+
+console.log(updateDisplay(12345678901));
