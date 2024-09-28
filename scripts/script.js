@@ -61,7 +61,7 @@ function operate(num1, num2, operator) {
             return divide(num1, num2);
         // if trying to equal with no operator
         default:
-            return 0; 
+            return 0;
     }
 }
 
@@ -106,6 +106,35 @@ function getResult() {
         num1 = displayVal;
         isSolved = true;
     }
+}
+
+function countDigitsLeftOfDecimal(num) {
+    return String(num).length;
+}
+
+function countDigitsRightOfDecimal(num) {
+    let decimalArr = String(num).split('.');
+    if (decimalArr[1]) {
+        return decimalArr[1].length;
+    }
+    return 0;
+}
+
+function checkIfNegative(num) {
+    return num < 0 ? true : false;
+}
+
+function determineToFixed(num) {
+    // 8 is max num of digits - the period
+    let totalDigits = 7;
+    let decimalIndex = String(num).indexOf('.');
+    if (checkIfNegative(num)) {
+        totalDigits -= 1;
+    }
+    if (decimalIndex > -1) {
+        totalDigits -= decimalIndex;
+    }
+    return totalDigits;
 }
 
 // assign number to displayVal
@@ -227,24 +256,24 @@ plus.addEventListener('click', () => {
 
     if (checkForOverflow()) {
         // set operator at beginning eliminates issues after equaled is true
-        operator = plus; 
+        operator = plus;
         // if num1 is undefined it means we want to start another operation
         if (num1 === undefined) {
             num1 = displayVal;
             // necessary so next number doesn't concat
-            displayVal = ''; 
-            
+            displayVal = '';
+
         }
         else if (num1 === '') {
             num1 = undefined;
         }
         // in case using plus as equals
-        else if (num2 === undefined && !isEqualed) { 
+        else if (num2 === undefined && !isEqualed) {
             getResult();
         }
-        else if (!isEqualed){
+        else if (!isEqualed) {
             // for additional plus clicks
-            num2 = currNum; 
+            num2 = currNum;
             getResult();
         }
 
@@ -299,7 +328,7 @@ equal.addEventListener('click', () => {
             displayVal = 'ERR';
         }
         else if (!Number.isSafeInteger(equation)) {
-            equation = equation.toFixed(2);
+            equation = equation.toFixed(determineToFixed(equation));
             displayVal = equation.toString();
         }
         else {
