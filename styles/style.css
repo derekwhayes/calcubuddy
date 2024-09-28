@@ -42,7 +42,7 @@ body {
     background-color: var(--case);
     width: clamp(300px, 100%, 475px);
     aspect-ratio: 1 / 1.9;
-    border-radius: 3%;
+    border-radius: 10% 10% 3% 3%;
     border: 2px solid black;
     margin: auto auto;
 }

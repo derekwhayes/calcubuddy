@@ -26,7 +26,6 @@ const equal = document.querySelector('#equal');
 const clear = document.querySelector('#c');
 const clearEntry = document.querySelector('#ce');
 const dot = document.querySelector('#dot');
-const allBtns = document.querySelectorAll('button');
 
 function add(num1, num2) {
     return num1 + num2;
@@ -57,8 +56,9 @@ function operate(num1, num2, operator) {
             return multiply(num1, num2);
         case div:
             return divide(num1, num2);
+        // if trying to equal with no operator
         default:
-            return 0; // if trying to equal with no operator
+            return 0; 
     }
 }
 
@@ -105,7 +105,7 @@ function getResult() {
     }
 }
 
-// assign number to displayVal...there's gotta be a better way
+// assign number to displayVal
 one.addEventListener('click', () => {
     if (isSolved) {
         displayVal = '';
@@ -222,23 +222,26 @@ dot.addEventListener('click', () => {
 
 plus.addEventListener('click', () => {
 
-    // if num1 is undefined it means we want to start another operation
     if (checkForOverflow()) {
-        operator = plus; // set operator at beginning eliminates issues after equaled is true
+        // set operator at beginning eliminates issues after equaled is true
+        operator = plus; 
+        // if num1 is undefined it means we want to start another operation
         if (num1 === undefined) {
             num1 = displayVal;
-            displayVal = ''; // necessary so next number doesn't concat
+            // necessary so next number doesn't concat
+            displayVal = ''; 
             
         }
         else if (num1 === '') {
             num1 = undefined;
         }
-        else if (num2 === undefined && !isEqualed) { // in case using plus as equals
-            
+        // in case using plus as equals
+        else if (num2 === undefined && !isEqualed) { 
             getResult();
         }
         else if (!isEqualed){
-            num2 = currNum; // for additional plus clicks
+            // for additional plus clicks
+            num2 = currNum; 
             getResult();
         }
 
@@ -252,7 +255,7 @@ minus.addEventListener('click', () => {
             displayVal = '';
         }
         else if (num1 === '') {
-            num1 = undefined;  // so hacky
+            num1 = undefined;
         }
         else if (num2 === undefined && !isEqualed) {
             getResult();
@@ -285,7 +288,7 @@ equal.addEventListener('click', () => {
             return;
         }
         equation = operate(parseFloat(num1), parseFloat(num2), operator);
-        // in case result exceeds the 10digit limit
+        // in case result exceeds the 8digit limit
         if (equation === 'N0N0N0N0') {
             displayVal = equation;
         }
