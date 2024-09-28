@@ -28,7 +28,7 @@ const clearEntry = document.querySelector('#ce');
 const dot = document.querySelector('#dot');
 const specialKey = document.querySelector('#special-key');
 
-const littleMelody = new Audio("../sounds/little-melody.wav");
+const littleMelody = new Audio("/sounds/little-melody.wav");
 
 function add(num1, num2) {
     return num1 + num2;
