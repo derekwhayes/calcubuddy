@@ -104,7 +104,8 @@ body {
 #mult,
 #c,
 #minus,
-#plus {
+#plus,
+#special-key {
     background-color: var(--case);
     font-size: 1.8rem;
     grid-column: span 2;
@@ -146,8 +147,8 @@ body {
     aspect-ratio: auto;
 }
 
-#power-switch {
-    grid-column: span 2;
+#special-key {
+    font-size: .8rem;
 }
 
 #ce:active,
@@ -167,7 +168,8 @@ body {
 #nine:active,
 #zero:active,
 #dot:active,
-#equal:active {
+#equal:active
+#special-key:active {
     box-shadow: none;
 }
 
@@ -175,5 +177,9 @@ body {
     #display {
         font-size: 2.4rem;
         padding: 1.8rem 18% 1.8rem 16%;
+    }
+
+    #special-key {
+        font-size: 1.2rem
     }
 }

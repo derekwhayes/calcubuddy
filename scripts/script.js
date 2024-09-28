@@ -26,6 +26,9 @@ const equal = document.querySelector('#equal');
 const clear = document.querySelector('#c');
 const clearEntry = document.querySelector('#ce');
 const dot = document.querySelector('#dot');
+const specialKey = document.querySelector('#special-key');
+
+const littleMelody = new Audio("../sounds/little-melody.wav");
 
 function add(num1, num2) {
     return num1 + num2;
@@ -326,4 +329,6 @@ clearEntry.addEventListener('click', () => {
     num2 = undefined;
     displayVal = '';
     updateDisplay();
-})
+});
+
+specialKey.addEventListener('click', () => littleMelody.play());
