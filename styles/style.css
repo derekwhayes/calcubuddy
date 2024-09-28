@@ -67,7 +67,7 @@ body {
     font-size: 1.8rem;
     letter-spacing: .8rem;
     text-align: right;
-    padding: 1.8rem 16% 1.8rem 14%;
+    padding: 1.8rem 22% 1.8rem 20%;
     border-radius: 10% 10% 0 0;
     font-family: led;
 }
@@ -176,7 +176,7 @@ body {
 @media (min-width: 450px) {
     #display {
         font-size: 2.4rem;
-        padding: 1.8rem 18% 1.8rem 16%;
+        padding: 1.8rem 22% 1.8rem 16%;
     }
 
     #special-key {
